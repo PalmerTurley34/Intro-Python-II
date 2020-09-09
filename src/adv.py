@@ -38,14 +38,77 @@ room['treasure'].s_to = room['narrow']
 #
 
 # Make a new player object that is currently in the 'outside' room.
+from player import Player
+player = Player('Palmer', room['outside'])
 
 # Write a loop that:
 #
 # * Prints the current room name
 # * Prints the current description (the textwrap module might be useful here).
 # * Waits for user input and decides what to do.
-#
+
+# print(player.current_loc, ':')
+# print(room[player.current_loc].desc)
+# direction = input("Which direction would you like to go? [n]orth, [e]ast, [s]outh, or [w]est")
+
+print('Starting Location:', player.current_loc.name)
+print(player.current_loc.desc)
+direction = input("Which direction would you like to go? [n]orth, [e]ast, [s]outh, or [w]est ")
+
+while direction[0].lower() != 'q':
+
 # If the user enters a cardinal direction, attempt to move to the room there.
 # Print an error message if the movement isn't allowed.
-#
+    if direction[0].lower() == 'n':
+        try:
+            player.current_loc.n_to
+        except:
+            print('Not a valid direction for this room')
+            direction = input()
+        else:
+            player.current_loc = player.current_loc.n_to
+            print(f'New Room: {player.current_loc.name}')
+            print(f'Description: {player.current_loc.desc}')
+            direction = input('Choose a new direction. Or "q" to quit. ')
+            continue
+
+    elif direction[0].lower() == 'e':
+        try:
+            player.current_loc.e_to
+        except:
+            print('Not a valid direction for this room')
+            direction = input()
+        else:
+            player.current_loc = player.current_loc.e_to
+            print(f'New Room: {player.current_loc.name}')
+            print(f'Description: {player.current_loc.desc}')
+            direction = input('Choose a new direction. Or "q" to quit. ')
+            continue
+
+    elif direction[0].lower() == 's':
+        try:
+            player.current_loc.s_to
+        except:
+            print('Not a valid direction for this room')
+            direction = input()
+        else:
+            player.current_loc = player.current_loc.s_to
+            print(f'New Room: {player.current_loc.name}')
+            print(f'Description: {player.current_loc.desc}')
+            direction = input('Choose a new direction. Or "q" to quit. ')
+            continue
+
+    elif direction[0].lower() == 'w':
+        try:
+            player.current_loc.w_to
+        except:
+            print('Not a valid direction for this room')
+            direction = input()
+        else:
+            player.current_loc = player.current_loc.w_to
+            print(f'New Room: {player.current_loc.name}')
+            print(f'Description: {player.current_loc.desc}')
+            direction = input('Choose a new direction. Or "q" to quit. ')
+            continue
 # If the user enters "q", quit the game.
+print('You have quit the game.')

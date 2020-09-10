@@ -49,6 +49,7 @@ player = Player('Palmer', room['outside'])
 print(f'Welcome {player.name}!\n')
 print('Starting Location:')
 print(player.current_room)
+print(f'Items in the room are: {player.current_room.items_in_room}\n')
 direction = input("Which direction would you like to go? [n]orth, [e]ast, [s]outh, or [w]est ")
 
 while direction != 'q':
@@ -66,6 +67,7 @@ while direction != 'q':
         else:
             print('\nNew Room:')
             print(player.current_room)
+            print(f'Items in the room are: {player.current_room.items_in_room}\n')
             direction = input('Choose a new direction. Or "q" to quit. ')
             continue
 

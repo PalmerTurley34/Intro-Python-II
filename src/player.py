@@ -20,3 +20,12 @@ class Player():
         elif direction == 'w':
             self.current_room = self.current_room.w_to
 
+    def check_inventory(self):
+        for item in self.inventory:
+            print(item)
+
+    def add_to_inventory(self, item):
+        self.inventory.append(item)
+
+    def remove_from_inventory(self, item):
+        self.inventory.remove(item)
